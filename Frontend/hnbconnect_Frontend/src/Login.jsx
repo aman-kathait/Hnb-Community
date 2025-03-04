@@ -1,4 +1,4 @@
-function App() {
+function Login() {
   return (
     <>
       <div className="flex items-center justify-center bg-gradient-to-b from-green-150 to-green-200 min-h-screen w-full">
@@ -39,4 +39,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;
