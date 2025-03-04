@@ -1,0 +1,26 @@
+const departments = [
+    "Computer Science",
+    "Mechanical Engineering",
+    "Civil Engineering",
+    "Electrical Engineering",
+    "Electronics & Communication",
+    "Physics",
+    "Chemistry",
+    "Mathematics",
+    "Biotechnology",
+    "Environmental Science",
+    "Pharmacy",
+    "Management Studies",
+    "Commerce",
+    "Economics",
+    "History",
+    "Political Science",
+    "Sociology",
+    "Psychology",
+    "English",
+    "Hindi",
+    "Sanskrit",
+    "Physical Education",
+];
+
+export default departments;
