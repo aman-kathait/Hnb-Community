@@ -1,4 +1,6 @@
-function Login() {
+import { Link } from "react-router-dom";
+
+export default function Login() {
   return (
     <>
       <div className="flex items-center justify-center bg-gradient-to-b from-green-150 to-green-200 min-h-screen w-full">
@@ -27,7 +29,8 @@ function Login() {
             </div>
            
             <button className="bg-white border border-blue-300 mx-auto sm:mx-0 p-3 sm:p-2 sm:w-full rounded-xl mt-5 flex justify-center font-semibold mb-2 items-center text-sm hover:scale-105 duration-300 text-[#002D74]">
-              Register Now!
+              <Link to={"/signup"}>Register Now!</Link>
+              
             </button>
           </div>
           <div className="hidden sm:block sm:w-1/2">
@@ -38,5 +41,3 @@ function Login() {
     </>
   );
 }
-
-export default Login;

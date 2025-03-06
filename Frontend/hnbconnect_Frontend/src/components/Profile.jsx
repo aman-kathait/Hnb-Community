@@ -1,6 +1,4 @@
-import React from 'react';
-
-function ProfilePage() {
+export default function Profile() {
   return (
     <div className="flex items-center justify-center bg-gradient-to-b from-green-150 to-green-200 min-h-screen w-full">
       <div className="bg-white rounded-2xl shadow-xl p-6 sm:max-w-3xl w-full sm:w-auto flex flex-col sm:flex-row sm:space-x-6">
@@ -43,6 +41,4 @@ function ProfilePage() {
       </div>
     </div>
   );
-}
-
-export default ProfilePage;
+  }
