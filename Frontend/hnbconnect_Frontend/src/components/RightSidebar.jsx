@@ -1,6 +1,16 @@
 export default function RightSidebar() {
   return (
-    <div className="p-4">
+    <div className="hidden md:block md:w-1/3 p-4">
+      {/* Search Bar */}
+      <div className="mb-6">
+        <input
+          type="text"
+          placeholder="Search..."
+          className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      {/* Who to Follow Section */}
       <div className="bg-white p-4 rounded-lg shadow">
         <h2 className="font-bold">Who to Follow</h2>
         <div className="mt-4">
@@ -40,4 +50,4 @@ export default function RightSidebar() {
       </div>
     </div>
   );
-  }
+}
