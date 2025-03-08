@@ -1,6 +1,6 @@
-import React from 'react';
+import { Link } from "react-router-dom";
 
-function SignupForm() {
+export default function SignUp() {
   // Get the current year
   const currentYear = new Date().getFullYear();
   
@@ -81,5 +81,3 @@ function SignupForm() {
     </>
   );
 }
-
-export default SignupForm;
