@@ -1,7 +1,45 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUp() {
+
+  const emailRef = useRef();
+  const fullNameRef = useRef();
+  const passwordRef = useRef();
+  const departmentRef = useRef();
+  const graduationYearRef = useRef();
+  const userTypeRef = useRef();
+  const navigate = useNavigate();
+  const [errorMessages, setErrorMessages] = useState([]);
+
+  // const confirmPasswordRef = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrorMessages([]);
+    fetch("http://localhost:3001/register", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: emailRef.current.value,
+        fullName: fullNameRef.current.value,
+        password: passwordRef.current.value,
+        role: userTypeRef.current.value,
+        department: departmentRef.current.value,
+        graduationYear: graduationYearRef.current.value
+      }),
+    })
+    .then(res=>{
+      if (res.status === 201) {
+        navigate("/login");
+      }else if (res.status === 422) {
+        return res.json();
+      }})
+      .then(({errorMessages})=>setErrorMessages(errorMessages));
+  }
+
   // Get the current year
   const currentYear = new Date().getFullYear();
   
@@ -22,6 +60,17 @@ export default function SignUp() {
   // Event handler for role change
   const handleRoleChange = (event) => {
     setSelectedRole(event.target.value);
+    if (event.target.value === "teacher") {
+      departmentRef.current.disabled = true;
+      graduationYearRef.current.disabled = true;
+      departmentRef.current.classList.add("bg-gray-200", "text-gray-500");
+      graduationYearRef.current.classList.add("bg-gray-200", "text-gray-500");
+    } else {
+      departmentRef.current.disabled = false;
+      graduationYearRef.current.disabled = false;
+      departmentRef.current.classList.remove("bg-gray-200", "text-gray-500");
+      graduationYearRef.current.classList.remove("bg-gray-200", "text-gray-500");
+    }
   };
 
   return (
@@ -32,11 +81,12 @@ export default function SignUp() {
           <div className="w-full sm:w-1/2 sm:px-5 justify-center">
             <img className="sm:hidden w-1/5 mx-auto" src="Hnblogo.png" alt="" />
             <h2 className="font-bold text-2xl text-center hidden sm:block sm:text-left">Sign Up</h2>
-            <form className="flex flex-col gap-2">
-              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700"></label>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+              <label htmlFor="fullName" className="block text-sm font-medium text-gray-700"></label>
               <input
                 type="text"
                 id="fullName"
+                ref={fullNameRef}
                 placeholder="Enter your Name"
                 className="p-5 sm:p-3 mx-4 sm:mx-0 mt-4 font-semibold sm:text-sm rounded-xl border border-gray-300 bg-white"
               />
@@ -45,6 +95,7 @@ export default function SignUp() {
               <input
                 type="email"
                 id="email"
+                ref={emailRef}
                 placeholder="Enter your Email"
                 className="p-5 sm:p-3 mx-4 sm:mx-0 font-semibold sm:text-sm rounded-xl border border-gray-300 bg-white"
               />
@@ -53,6 +104,7 @@ export default function SignUp() {
               <input
                 type="password"
                 id="password"
+                ref={passwordRef}
                 placeholder="Enter your Password"
                 className="p-5 sm:p-3 mx-4 sm:mx-0 font-semibold sm:text-sm rounded-xl border border-gray-300 bg-white"
               />
@@ -60,6 +112,7 @@ export default function SignUp() {
               <label htmlFor="userType" className="block text-sm font-medium text-gray-700"></label>
               <select
                 id="userType"
+                ref={userTypeRef}
                 className="p-5 sm:p-3 mx-4 sm:mx-0 font-semibold sm:text-sm rounded-xl border border-gray-300 bg-white"
                 onChange={handleRoleChange}
               >
@@ -71,8 +124,8 @@ export default function SignUp() {
               <label htmlFor="department" className="block text-sm font-medium text-gray-700"></label>
               <select
                 id="department"
-                className={`p-5 sm:p-3 mx-4 sm:mx-0 font-semibold sm:text-sm rounded-xl border border-gray-300 bg-white ${selectedRole === "teacher" ? "bg-gray-200 text-gray-500 hidden" : ""}`}
-                disabled={selectedRole === "teacher"}
+                ref={departmentRef}
+                className="p-5 sm:p-3 mx-4 sm:mx-0 font-semibold sm:text-sm rounded-xl border border-gray-300 bg-white"
               >
                 <option value="">Select Department</option>
                 {departmentOptions.map((department) => (
@@ -80,13 +133,11 @@ export default function SignUp() {
                 ))}
               </select>
               
-              
-              
               <label htmlFor="graduationYear" className="block text-sm font-medium text-gray-700"></label>
               <select
                 id="graduationYear"
-                className={`p-5 sm:p-3 mx-4 sm:mx-0 font-semibold sm:text-sm rounded-xl border border-gray-300 bg-white ${selectedRole === "teacher" ? "bg-gray-200 text-gray-500 hidden"  : ""}`}
-                disabled={selectedRole === "teacher"}
+                ref={graduationYearRef}
+                className="p-5 sm:p-3 mx-4 sm:mx-0 font-semibold sm:text-sm rounded-xl border border-gray-300 bg-white"
               >
                 <option value="">Select Graduation Year</option>
                 {yearOptions.map((year) => (
@@ -106,6 +157,8 @@ export default function SignUp() {
             <button className="bg-white border border-blue-300 mx-auto sm:mx-0 p-3 sm:p-2 sm:w-full rounded-xl mt-5 flex justify-center font-semibold mb-2 items-center text-sm hover:scale-105 duration-300 text-[#002D74]">
               <Link to={"/login"}>Login</Link>
             </button>
+
+            {errorMessages.map((errorMsg,index)=> <div key={index}>{errorMsg}</div>)}
           </div>
           <div className="hidden sm:block sm:w-1/2">
             <img className="rounded-2xl" src="/Sample1.png" alt="" />
