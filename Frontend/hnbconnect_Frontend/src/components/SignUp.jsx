@@ -17,7 +17,7 @@ export default function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrorMessages([]);
-    fetch("http://localhost:3001/register", {
+    fetch("http://localhost:3002/register", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
