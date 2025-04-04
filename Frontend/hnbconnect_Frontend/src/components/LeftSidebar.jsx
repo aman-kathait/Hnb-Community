@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
+import Card from "./Card";
 
 export default function LeftSidebar() {
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 flex justify-around p-2 md:static md:w-16 md:h-screen md:flex-col md:justify-start md:border-r md:border-t-0">
-      <Link to="/" className="flex flex-col items-center text-gray-700 hover:text-blue-500">
+    <div className="fixed bottom-0 left-0 w-full bg-gray-50  border-gray-200 flex justify-around p-4 md:static  md:w-100 md:h-screen md:flex-col md:justify-start md:border-r md:border-t-0">
+      <div className="hidden sm:block">
+        <Card/>
+      </div>
+      <Link to="/" className="md:hidden flex flex-col items-center text-gray-700 hover:text-blue-500">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
@@ -20,7 +24,7 @@ export default function LeftSidebar() {
         </svg>
         <span className="text-xs md:hidden">Home</span>
       </Link>
-      <Link to="/profile" className="flex flex-col items-center text-gray-700 hover:text-blue-500">
+      <Link to="/profile" className="md:hidden flex flex-col items-center text-gray-700 hover:text-blue-500">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
@@ -37,7 +41,7 @@ export default function LeftSidebar() {
         </svg>
         <span className="text-xs md:hidden">Profile</span>
       </Link>
-      <Link to="/notifications" className="flex flex-col items-center text-gray-700 hover:text-blue-500">
+      <Link to="/notifications" className="md:hidden flex flex-col items-center text-gray-700 hover:text-blue-500">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
@@ -52,9 +56,9 @@ export default function LeftSidebar() {
             d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
           />
         </svg>
-        <span className="text-xs md:hidden">Notifications</span>
+        <span className="text-xs md:hidden ">Notifications</span>
       </Link>
-      <Link to="/logout" className="flex flex-col items-center text-gray-700 hover:text-blue-500">
+      <Link to="/logout" className="md:hidden flex flex-col items-center text-gray-700 hover:text-blue-500">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
@@ -71,6 +75,11 @@ export default function LeftSidebar() {
         </svg>
         <span className="text-xs md:hidden">Logout</span>
       </Link>
+
+      <div className="hidden md:flex flex-col ml-4 space-y-7 text-gray-400 text-xl font-semibold mt-5">
+        <div><Link to="/settings">⚙ Settings</Link></div>
+        <div><Link to="/settings">🗄 Help</Link></div>
+      </div>
     </div>
   );
 }
