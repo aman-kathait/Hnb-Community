@@ -7,12 +7,12 @@ export default function Home() {
 
   return (
     <div className="p-4">
-      <div className="flex justify-center mb-4">
+      <div className="flex justify-center mb-4  ">
         <button
           onClick={() => setActiveTab("feed")}
-          className={`px-4 py-2 mr-2 ${
+          className={`px-4 py-2 mr-2  ${
             activeTab === "feed" ? "bg-blue-500 text-white" : "bg-gray-200"
-          } rounded-full`}
+          } rounded-lg`}
         >
           Feed
         </button>
@@ -20,7 +20,7 @@ export default function Home() {
           onClick={() => setActiveTab("events")}
           className={`px-4 py-2 ${
             activeTab === "events" ? "bg-blue-500 text-white" : "bg-gray-200"
-          } rounded-full`}
+          } rounded-lg`}
         >
           Events
         </button>
