@@ -61,6 +61,25 @@ export default function Navbar() {
             </Link>
            </div>
 
+           <div className="m-6 hidden md:block">
+          <Link to="/create-post" className="flex flex-col items-center text-gray-700 hover:text-blue-500">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+            <span className="text-xs md:hidden">Create Post</span>
+          </Link>
+        </div>
           {/* Right Side: Logout Button */}
           <Link to="/logout" div className="hidden md:block flex-shrink-0 ml-5">
 
@@ -75,6 +94,8 @@ export default function Navbar() {
               + LOGOUT
             </button>
           </Link>
+        
+          
         </div>
       </div>
     </div>

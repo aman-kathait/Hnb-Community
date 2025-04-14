@@ -9,13 +9,13 @@ export default function RightSidebar() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center">
               <img
-                src="https://via.placeholder.com/40"
+                src="profile5.jpg"
                 alt="User"
-                className="rounded-full"
+                className="rounded-full  h-12 w-12"
               />
               <div className="ml-2">
-                <p className="font-bold">User 1</p>
-                <p className="text-gray-500">@user1</p>
+                <p className="font-bold">Dheeraj Bisht</p>
+                <p className="text-gray-500 text-sm">@Dheeraj_22332</p>
               </div>
             </div>
             <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">
@@ -25,13 +25,13 @@ export default function RightSidebar() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center">
               <img
-                src="https://via.placeholder.com/40"
+                src="profile4.jpg"
                 alt="User"
-                className="rounded-full"
+                className="rounded-full h-12 w-12"
               />
               <div className="ml-2">
-                <p className="font-bold">User 2</p>
-                <p className="text-gray-500">@user2</p>
+                <p className="font-bold">Kshtiz Thapliyal</p>
+                <p className="text-gray-500 text-sm">@Kshitiz_2113</p>
               </div>
             </div>
             <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">
