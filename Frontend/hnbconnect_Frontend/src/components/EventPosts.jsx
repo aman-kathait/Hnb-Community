@@ -5,14 +5,14 @@ export default function EventPosts() {
         title: "Tech Seminar: AI in 2024",
         description: "Join us for an insightful seminar on the future of AI.",
         date: "March 15, 2024",
-        image: "https://via.placeholder.com/600x400",
+        image: "https://img.freepik.com/premium-photo/abstract-people-lecture-seminar-room-education-training-concept_124865-3750.jpg?semt=ais_hybrid",
       },
       {
         id: 2,
         title: "Cultural Fest 2024",
         description: "Experience the vibrant cultural diversity of our university.",
         date: "March 20, 2024",
-        image: "https://via.placeholder.com/600x400",
+        image: "event2.jpg",
       },
       {
         id: 3,
